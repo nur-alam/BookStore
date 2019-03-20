@@ -46,7 +46,7 @@
                             </td>
                             <td data-th="Price">{{ $borrow->created_at->diffForHumans() }}</td>
                             <td data-th="Price" class=" {{ $borrow->status ? 'alert-info' : ( ($diff->format("%a") > 15) ? 'alert-danger': 'alert-info' )  }} " >
-                                {{ $borrow->status ? 'okk' : ( $diff->format("%a") > 15 ? "Time over , pls return back book asap." : $diff->format("%a")." days ago" ) }}
+                                {{ $borrow->status ? 'okk' : ( $diff->format("%a") > 15 ? "Time over , pls return back book asap." : (15-$diff->format("%a"))." days to go" ) }}
                             </td>
                             <td data-th="Price">{{ $borrow->status ? 'returned' : 'should return' }}</td>
                         </tr>

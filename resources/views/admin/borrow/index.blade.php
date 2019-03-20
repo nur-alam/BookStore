@@ -106,7 +106,7 @@
                                 </td>
                                 <td data-th="Price">{{ $borrow->created_at->diffForHumans() }}</td>
                                 <td data-th="Price" class=" {{ $diff->format("%a") > 15 ? 'alert-danger' : ''}} " >
-                                    {{ $diff->format("%a") > 15 ? "Time over , take some actions to this user!!." : $diff->format("%a")." days ago" }}
+                                    {{ $diff->format("%a") > 15 ? "Time over , take some actions to this user!!." : (15-$diff->format("%a"))." days to go" }}
                                 </td>
                                 <td data-th="Price">
                                     <a href="{{route('borrow.update',[$borrow->user_id,$borrow->book_id] )}}" class="btn btn-danger" onclick="document.getElementById('borrowback').submit()">

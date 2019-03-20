@@ -8,13 +8,19 @@
 ---
 >## Admin home page
 <img src="adminhome.png">
->## Admin book managemant 
+---
+> Admin book managemant 
 <img src="adminbookmng.png">
->## Admin borrowlist
+---
+> Admin borrowlist
 <img src="borrow.png">
->>## frontend home page
+---
+> frontend home page 
 <img src="home.png">
->## search functionality
+---
+> search functionality 
 <img src="search.png">
->## profile page
+---
+> profile page
 <img src="profile.png">
+---
