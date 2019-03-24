@@ -36,7 +36,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{route('borrow.index')}}">
+      <a class="nav-link" href="{{route('admin.borrow.index')}}">
         <i class="fas fa-fw fa-wrench"></i>
         <span>Borrow Book Management</span>
       </a>

@@ -28,8 +28,15 @@
                             <h4>TK. {{$data['book']->price}} </h4>
                         </div>
                         <div class="book-btn">
+                            <button class="btn btn-warning" onclick="document.getElementById('borrowbook').submit();">Rent Book</button>
                             <button class="btn btn-warning" onclick="document.getElementById('addtocart').submit();">Buy Book</button>
                             <form action="{{route('cart.store')}}" method="post" id="addtocart">
+                                @csrf
+                                <input type="hidden" value="{{$data['book']->id}}" name="book_id">
+                                <input type="hidden" value="{{$data['book']->name}}" name="name">
+                                <input type="hidden" value="{{$data['book']->price}}" name="price">
+                            </form>
+                            <form action="{{route('borrow.store')}}" method="post" id="borrowbook">
                                 @csrf
                                 <input type="hidden" value="{{$data['book']->id}}" name="book_id">
                                 <input type="hidden" value="{{$data['book']->name}}" name="name">

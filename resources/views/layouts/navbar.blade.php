@@ -20,6 +20,7 @@
                     {{--<input id="myInput" type="text" name="myCountry" placeholder="Country">--}}
                     {{--<input  id="search"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--}}
                     {{--onkeyup="searchFunction()" onfocusout="disableSearchResult()" --}}
+                    
                 </form>
               </li>
               <li class="menu-has-children">
@@ -38,7 +39,7 @@
                   </a>
               </li>
               <li>
-                  <a href="{{ route('borrowlist') }}">
+                  <a href="{{ route('borrow.index') }}">
                     <span id="cart_menu" class="badge badge-pill badge-primary" style="padding: 7px 6px;font-size: 12px;">Borrow <span style="margin-left: 5px;">{{$borrow}}</span></span>
                   </a>
               </li>
@@ -50,6 +51,11 @@
                   <li>
                     <a href="{{route('order_list')}}">
                       Your Order List
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{route('borrowlist')}}">
+                      Your Borrow List
                     </a>
                   </li>
                   <li>
@@ -89,7 +95,3 @@
 
     </div>
 </header><!-- #header -->
-<div class="list-group" id="search_list"
-     style="position: fixed;left: 19%;width: 62%;top: 10%; max-height: 600px; z-index: 99999999; overflow-y: scroll;">
-
-</div>

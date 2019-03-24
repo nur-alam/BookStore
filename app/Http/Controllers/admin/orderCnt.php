@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\User;
+use App\Models\Book;
 use App\Models\cart_items;
 use App\Models\Orders;
 use Illuminate\Http\Request;
@@ -14,7 +16,7 @@ class orderCnt extends Controller
 
     public function index()
     {
-        $orders = Orders::all();
+          $orders = Orders::where('status','=',1)->get();
 
 //        $orders = DB::table('users')
 //                        ->join('orders', 'users.id','=','orders.user_id')
@@ -34,8 +36,7 @@ class orderCnt extends Controller
     public function order_details($order)
     {
         $items = cart_items::where('order_id','=',$order)
-                    ->where('is_order','=',1)
-                    ->get();// dd($items);
+                                ->get(); //dd($items);
         $total = 0;
         foreach ($items as $item){
             $qty = $item->quantity;
@@ -47,6 +48,33 @@ class orderCnt extends Controller
             'total' => $total
         ];
         return view('admin.order.order_details',compact('data'));
+    }
+
+    public function history()
+    {
+        $orders = Orders::where('status','=',0)->get();
+        $users = User::all();
+        $books = Book::all();
+
+        $data = [
+            'orders' => $orders,
+            'users' => $users,
+            'books' => $books
+        ];
+
+        return view('admin.order.order_history',compact('data'));
+    }
+
+    public function destroy($id)
+    {
+        $borrow = Orders::find($id);
+
+        Orders::where('id','=',$id)
+            ->update([
+                'status' => '0'
+            ]);
+        session()->flash('success','Dismissed the order!!');
+        return back();
     }
 
 
@@ -75,12 +103,6 @@ class orderCnt extends Controller
 
 
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
     {
         //
     }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Author;
 use App\Models\Book;
-use App\Models\borrow_items;
+use App\Models\borrow_lists;
+use App\Models\Borrows;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class BorrowCnt extends Controller
     public function index()
     {
 
-        $borrows = borrow_items::where('status','=',0)->get();
+        $borrows = Borrows::where('status','=',1)->get();
         $users = User::all();
         $books = Book::all();
 
@@ -39,10 +40,10 @@ class BorrowCnt extends Controller
 
         $this->validate($request,$rules);
 
-        $hasAlready = borrow_items::where( 'user_id','=',$request->user_id )->first();
+        $hasAlready = borrow_lists::where( 'user_id','=',$request->user_id )->first();
 
         if(count($hasAlready) < 3){
-            borrow_items::create([
+            borrow_lists::create([
                 'user_id' => $request->user_id,
                 'book_id' => $request->book_id
             ]);
@@ -78,7 +79,7 @@ class BorrowCnt extends Controller
     public function update($user_id,$book_id)
     {
 
-        $has = borrow_items::where( 'user_id','=',$user_id )->where( 'book_id','=',$book_id )->first();
+        $has = borrow_lists::where( 'user_id','=',$user_id )->where( 'book_id','=',$book_id )->first();
 
         if($has){
             borrow_items::where('user_id','=',$user_id)
@@ -96,9 +97,53 @@ class BorrowCnt extends Controller
 
     }
 
+    public function borrow_details($borrow)
+    {
+
+        $items = borrow_lists::where('borrow_id','=',$borrow)
+            ->where('is_borrow','=',1)
+            ->get();// dd($items);
+        $total = 0;
+        foreach ($items as $item){
+            $price = $item->book->price*(20/100);
+            $total += $price*1;
+        }
+        $data = [
+            'items' => $items,
+            'total' => $total
+        ];
+        return view('admin.borrow.borrow_details',compact('data'));
+    }
+
 
     public function destroy($id)
     {
-        //
+        $borrow = Borrows::find($id);
+
+        Borrows::where('id','=',$id)
+            ->update([
+                'status' => '0'
+            ]);
+        session()->flash('success','Dismissed the borrow!!');
+        return back();
     }
+
+    public function history()
+    {
+
+        $borrows = Borrows::where('status','=',0)->get();
+        $users = User::all();
+        $books = Book::all();
+
+        $data = [
+            'borrows' => $borrows,
+            'users' => $users,
+            'books' => $books
+        ];
+
+        return view('admin.borrow.borrow_history',compact('data'));
+
+    }
+
+
 }

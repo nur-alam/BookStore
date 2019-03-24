@@ -18,46 +18,70 @@
                 <div class="row">
                     <table id="cart" class="table table-hover table-condensed">
                         <thead>
-                            <tr>
-                                <th style="width:50%">Book</th>
-                                <th style="width: 10%">Date</th>
-                                <th style="width: 10%">Status</th>
-                                <th style="width:10%"></th>
-                            </tr>
+                        <tr>
+                            <th style="width:50%">Book</th>
+                            <th style="width:10%">Price</th>
+                            <th style="width:8%">Remove</th>
+                            <th style="width:22%" class="text-center">Subtotal (20% off)</th>
+                            <th style="width:10%"></th>
+                        </tr>
                         </thead>
                         <tbody>
-                        @forelse($data['borrows'] as $borrow)
-                           <?php
-                             $date1 = date_create($borrow->created_at);
-                             $date2 = date_create('now');
-                             $diff = date_diff($date1,$date2);
-                           ?>
-                        <tr>
-                            <td data-th="Product">
-                                <div class="row">
-                                    <div class="col-sm-4 hidden-xs">
-                                        <img src="{{ asset(''.$borrow->book->image) }}" alt="..." style="max-width: 90px;ax-height: 90px;" class="img-responsive"/>
+                        @forelse($data['orders'] as $order)
+                            <tr>
+                                <td data-th="Product">
+                                    <div class="row">
+                                        <div class="col-sm-4 hidden-xs">
+                                            <img src="{{ asset(''.$order->book->image) }}" alt="..." style="max-width: 90px;max-height: 90px;" class="img-responsive"/>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <h4 class="nomargin">{{$order->book->name}}</h4>
+                                            <p>{{$order->book->author->name}}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <h4 class="nomargin">{{$borrow->book->name}}</h4>
-                                        <p>{{$borrow->book->author->name}}</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-th="Price">{{ $borrow->created_at->diffForHumans() }}</td>
-                            <td data-th="Price" class=" {{ $borrow->status ? 'alert-info' : ( ($diff->format("%a") > 15) ? 'alert-danger': 'alert-info' )  }} " >
-                                {{ $borrow->status ? 'okk' : ( $diff->format("%a") > 15 ? "Time over , pls return back book asap." : (15-$diff->format("%a"))." days to go" ) }}
-                            </td>
-                            <td data-th="Price">{{ $borrow->status ? 'returned' : 'should return' }}</td>
-                        </tr>
+                                </td>
+                                <td data-th="Price">{{$order->book->price}}</td>
+                                <td class="actions" data-th="">
+                                    {{--<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>--}}
+
+                                    <form action="{{ route('borrow.destroy', $order->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td data-th="Subtotal" class="text-center">{{$order->book->price*(20/100)}}</td>
+                            </tr>
                         @empty
                             <tr>
                                 <td>
-                                    <h3>Your borrow item is empty!</h3>
+                                    <h3>Your order is empty!</h3>
                                 </td>
                             </tr>
                         @endforelse
                         </tbody>
+                        <tfoot>
+                        <tr class="visible-xs">
+
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="hidden-xs"></td>
+                            <td class="hidden-xs text-center"><strong>Total {{$data['total']}}</strong></td>
+
+                            <form action="{{route('placeborrow')}}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <td>
+                                    <button class="btn btn-success btn-block">
+                                        Submit Borrow Request
+                                        <i class="fa fa-angle-right"></i>
+                                    </button>
+                                </td>
+                            </form>
+                        </tr>
+                        </tfoot>
                     </table>
 
                 </div>

@@ -3,7 +3,6 @@
 @section('content')
 
 
-
 <!-- Content Row -->
 
     <!-- Earnings (Monthly) Card Example -->
@@ -13,10 +12,10 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Usars</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">500</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{count($data['users'])}}</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                <i class="fas fa-users fa-2x" style="color: #4e73df;"></i>
             </div>
           </div>
         </div>
@@ -30,10 +29,10 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Books</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">1000</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{count($data['books'])}}</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                <i class="fas fa-book-open fa-2x" style="color: #1cc88a;"></i>
             </div>
           </div>
         </div>
@@ -46,10 +45,10 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Writter</div>
+              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Authors</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{count($data['authors'])}}</div>
                 </div>
                 <div class="col">
                   <div class="progress progress-sm mr-2">
@@ -59,7 +58,7 @@
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                <i class="fas fa-pencil-alt fa-2x" style="color: #36b9cc;"></i>
             </div>
           </div>
         </div>
@@ -73,10 +72,10 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Category</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{count($data['categories'])}}</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-comments fa-2x text-gray-300"></i>
+                <i class="fas fa-th-list fa-2x" style="color: #f6c23e ;"></i>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Model\User;
 use App\Models\borrow_items;
+use App\Models\borrow_lists;
 use App\Models\cart_items;
 use App\Models\Orders;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('*', function ($view){
-            $orders = borrow_items::where('user_id','=',auth()->id())->where('status','=',0)->get();
+            $orders = borrow_lists::where('user_id','=',auth()->id())->
+                        where('is_borrow','=',0)
+                        ->where('disable','=',0)
+                        ->get();
             $view->with('borrow',count($orders));
         });
 

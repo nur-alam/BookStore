@@ -4,19 +4,20 @@
 
 
 
+    <section id="BookDetails" class="section_padding margin-from-header">
+        <div class="container">
+            <div class="row">
+
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800" style="font-weight:bold;margin-right:50px;">Order list</h1>
-                            <a class="btn" href="{{route('order.history')}}" style="font-wight:bold;">
-                                Order Hisotry
-                            </a>
+                        <div class="pull-left" style="margin-bottom: 30px;margin-top: 30px;">
+                            <h5>Borrow History</h5>
                         </div>
                     </div>
                 </div><!-- end of col-md-12 -->
 
                 <div class="col-md-12">
-                    <div class="">
+                    <div class="row">
                         <table id="cart" class="table table-hover table-condensed">
                             <thead>
                             <tr>
@@ -28,7 +29,7 @@
                             </thead>
                             <tbody>
                             <?php $i = 0; ?>
-                            @forelse($data['orders'] as $order)
+                            @forelse($data['borrows'] as $order)
                                 <tr>
                                     <td>
                                         {{++$i}}
@@ -46,19 +47,15 @@
                                     </td>
                                     <td data-th="Price">{{$order->status}}</td>
                                     <td data-th="Quantity">
-                                        <a href="{{route('order_details',$order->id)}}" class="btn btn-info">
+                                        <a href="{{route('borrow_details',$order->id)}}" class="btn btn-info">
                                             Details
-                                            {{--<i class="fa fa-trash-o"></i>--}}
-                                        </a>
-                                        <a href="{{route('order.destroy',$order->id)}}" class="btn btn-info">                                        
-                                            <i class="fas fa-window-close"></i>
                                         </a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td>
-                                        <h3>Your order is empty!</h3>
+                                        <h3>Borrow is empty!</h3>
                                     </td>
                                 </tr>
                             @endforelse
@@ -67,12 +64,14 @@
 
                             </tfoot>
                         </table>
-
                     </div>
                 </div><!-- end of col-md-12 -->
 
 
 
+            </div><!-- end of row -->
+        </div><!-- end of container -->
+    </section><!-- end of section  -->
 
 
 @endsection
