@@ -6,30 +6,16 @@
                     <div class="single-footer-widget">
                         <h4>About BookHub</h4>
                         <p>
-                            We have tested a number of registry fix and clean utilities and present our top 3 list on our site for your convenience.
+                            About BookHub.
                         </p>
-                        <p class="footer-text">
-                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>
-                        </p>
+
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
-                        <h4>Newsletter</h4>
-                        <p>Stay updated with our latest trends</p>
-                        <div class="" id="mc_embed_signup">
-                           <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get">
-                            <div class="input-group">
-                              <input type="text" class="form-control" name="EMAIL" placeholder="Enter Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email Address '" required="" type="email">
-                              <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
-                                  <span class="lnr lnr-arrow-right"></span>
-                                </button>
-                              </div>
-                                <div class="info"></div>
-                            </div>
-                          </form>
-                        </div>
+                        <h4>Feature</h4>
+                        <p>Buy Book</p>
+                        <p>Borrow Book Book</p>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
@@ -77,9 +63,15 @@
     <script src="{{asset('js/script.js')}}"></script>
 
     <script type="application/javascript">
+
+
+
         toastr.options.closeButton = true;
         @if(session()->has('success'))
             toastr.success("{{session('success')}}");
+        @endif
+        @if(session()->has('info'))
+            toastr.info("{{session('info')}}");
         @endif
         @if($errors->any())
             @if($errors->count() == 1)
@@ -110,7 +102,6 @@
                 axios.get('/search/'+val)
                     .then(function (res) {
                         if (res.data) {
-                            console.log(res.data.length);
                             res.data.map(data => {
                                 b = document.createElement("DIV");
                                 b.innerHTML += `<a href="/book/${data.name}" class="list-group-item" style="width: 100%;">

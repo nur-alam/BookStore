@@ -19,6 +19,10 @@ Route::get('/category/{category}','bookCnt@cat_wise_books')->name('cat_wise_book
 
 Route::get('/search/{search}','searchCnt@search');
 
+Route::get('/rentable/books','HomeController@rentable')->name('reantable');
+
+Route::get('/buyable/books','HomeController@buyable')->name('buyable');
+
 Route::group(['middleware'=>'auth'], function (){
 
     Route::get('/cart','CartCnt@index')->name('cart.index');
@@ -42,18 +46,21 @@ Route::group(['middleware'=>'auth'], function (){
     Route::get('/profile/reset/password','profileCnt@reset_password')->name('reset_password');
     Route::patch('/profile/changePassword','profileCnt@changePassword')->name('changePassword');
 
+    Route::get('/nid','profileCnt@nid')->name('nid');
+    Route::post('/nids','profileCnt@nidStore')->name('nidStore');
+
 
 });
 
 Route::prefix('admin')->group(function(){
 
-        
+
         Route::get('/login','Auth\AdminLoginController@showLoginFrom')->name('admin.login');
         Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
         Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
         Route::middleware('auth:admin')->group(function(){
-        
+
             Route::get('/', 'AdminController@index')->name('admin.home');
 
             Route::get('/users', 'AdminUsersCnt@index')->name('admin.users');
@@ -72,8 +79,8 @@ Route::prefix('admin')->group(function(){
             Route::post('/borrow/store','admin\BorrowCnt@store')->name('admin.borrow.store');
             Route::get('/borrow/update/{user_id}/{book_id}','admin\BorrowCnt@update')->name('admin.borrow.update');
             Route::get('/borrow/{borrow}/details','Admin\BorrowCnt@borrow_details')->name('borrow_details');
-            Route::get('/destroy/{borrow}','Admin\BorrowCnt@destroy')->name('borrow.destroy');
-            Route::get('/borrow/history','Admin\BorrowCnt@history')->name('borrow.history'); 
+            Route::get('/disable/{borrow}','Admin\BorrowCnt@destroy')->name('borrow.destroyy');
+            Route::get('/borrow/history','Admin\BorrowCnt@history')->name('borrow.history');
 
         });
 

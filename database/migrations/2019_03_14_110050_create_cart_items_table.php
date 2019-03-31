@@ -24,13 +24,13 @@ class CreateCartItemsTable extends Migration
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')->on('users')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('book_id')
                 ->references('id')->on('books')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('order_id')
                 ->references('id')->on('orders')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

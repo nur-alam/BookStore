@@ -5,7 +5,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.home') }}">
       <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+        <i class="fas fa-book-open fa-2x" style="color: #1cc88a;"></i>
       </div>
       <div class="sidebar-brand-text mx-3">Dashboard </div>
     </a>
@@ -19,29 +19,29 @@
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link" href="{{route('admin.users')}}">
-        <i class="fas fa-fw fa-wrench"></i>
+        <i class="fas fa-user-friends"></i>
         <span>users</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{route('book.index')}}">
-        <i class="fas fa-fw fa-wrench"></i>
+        <i class="fas fa-book"></i>
         <span>Book Management</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{route('order.index')}}">
-        <i class="fas fa-fw fa-wrench"></i>
+        <i class="fas fa-sort-amount-down"></i>
         <span>Order Management</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{route('admin.borrow.index')}}">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Borrow Book Management</span>
+        <i class="fas fa-sort-alpha-up"></i>
+        <span>Rent Book Management</span>
       </a>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-wrench"></i>
         <span>Utilities</span>
@@ -55,7 +55,7 @@
           <a class="collapse-item" href="utilities-other.html">Other</a>
         </div>
       </div>
-    </li>
+    </li> --}}
 
 
 

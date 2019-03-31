@@ -7,6 +7,7 @@ use App\Models\borrow_items;
 use App\Models\borrow_lists;
 use App\Models\cart_items;
 use App\Models\Orders;
+use Dotenv\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use View;

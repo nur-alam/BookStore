@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td data-th="Price">{{$order->book->price}}</td>
+                                <td data-th="Price" style="font-weight: bold;">{{$order->book->price}}</td>
                                 <td class="actions" data-th="">
                                     {{--<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>--}}
 
@@ -52,7 +52,7 @@
                                         </button>
                                     </form>
                                 </td>
-                                <td data-th="Subtotal" class="text-center">{{$order->book->price*(20/100)}}</td>
+                                <td data-th="Subtotal" class="text-center" style="font-weight: bold;">{{$order->book->price*(20/100)}}</td>
                             </tr>
                         @empty
                             <tr>
@@ -68,7 +68,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" class="hidden-xs"></td>
-                            <td class="hidden-xs text-center"><strong>Total {{$data['total']}}</strong></td>
+                            <td class="hidden-xs text-center" style="font-weight: bold;"><strong>Total {{$data['total']}}</strong></td>
 
                             <form action="{{route('placeborrow')}}" method="post">
                                 @csrf

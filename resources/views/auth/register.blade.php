@@ -54,10 +54,20 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                 </div>
 
+                <div class="form-group">
+                    <label for="mobile">Mobile</label>
+                    <input name="mobile" type="text" id="mobile" class="form-control {{ $errors->has('mobile') ? ' is-invalid' : '' }}">
+                    @if($errors->has('mobile'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('mobile') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
                 <div class="form-group row mb-0">
-                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                            {{ __('Register') }}
-                        </button>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        {{ __('Register') }}
+                    </button>
                 </div>
 
             </form><!-- end of form -->

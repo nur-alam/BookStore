@@ -26,6 +26,16 @@
               <li class="menu-has-children">
                 <a href="javascript:void(0)">Book Category</a>
                 <ul>
+                  <li>
+                  <a href="{{route('buyable')}}">
+                      Buyable Books
+                    </a>
+                  </li>
+                  <li>
+                  <a href="{{route('reantable')}}">
+                      Rentable Books
+                    </a>
+                  </li>
                   <li><a href="{{route('cat_wise_books','প্রোগ্রামিং')}}">প্রোগ্রামিং</a></li>
                   <li><a href="{{route('cat_wise_books','উপন্যাস')}}">উপন্যাস</a></li>
                   <li><a href="{{route('cat_wise_books','সায়েন্স')}}">সায়েন্স</a></li>
@@ -40,7 +50,7 @@
               </li>
               <li>
                   <a href="{{ route('borrow.index') }}">
-                    <span id="cart_menu" class="badge badge-pill badge-primary" style="padding: 7px 6px;font-size: 12px;">Borrow <span style="margin-left: 5px;">{{$borrow}}</span></span>
+                    <span id="cart_menu" class="badge badge-pill badge-primary" style="padding: 7px 6px;font-size: 12px;">Rent <span style="margin-left: 5px;">{{$borrow}}</span></span>
                   </a>
               </li>
               <li class="menu-has-children">
@@ -55,7 +65,7 @@
                   </li>
                   <li>
                     <a href="{{route('borrowlist')}}">
-                      Your Borrow List
+                      Your Rent List
                     </a>
                   </li>
                   <li>

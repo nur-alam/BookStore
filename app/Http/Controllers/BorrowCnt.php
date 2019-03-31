@@ -70,6 +70,10 @@ class BorrowCnt extends Controller
     public function store(Request $request)
     {
 
+        if(!auth()->user()->nid || !auth()->user()->nid_img){
+            session()->flash('info','please update your nid info first, then you will be allowed to rent a book.');
+            return redirect(route('nid'));
+        }
         //dd($request->all());
 
         $rules = [
@@ -95,7 +99,7 @@ class BorrowCnt extends Controller
                 'user_id' => auth()->id(),
                 'book_id' => $request->book_id
             ]);
-            session()->flash('success','Book added to your borrow list, make sure return this book withing 15 days');
+            session()->flash('success','Book added to your borrow list.');
             return back();
         }
 

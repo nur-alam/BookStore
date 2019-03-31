@@ -37,12 +37,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th class="">Email</th>
-                                        <td>
-                                            <input value="{{auth()->user()->email}}" type="email" name="email" class="form-control">
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <th class="branch-th">image</th>
                                         <td>
                                            <input id="image" type="file"  class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}" onchange="readImage(this);"  autofocus>

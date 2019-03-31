@@ -38,11 +38,11 @@
                                     </div>
                                 </div>
                             </td>
-                            <td data-th="Price">{{$order->book->price}}</td>
+                            <td data-th="Price" style="font-weight: bold;">{{$order->book->price}}</td>
                             <td data-th="Quantity">
                                 <input onchange="qty({{$order->id}})" id="qty_{{$order->id}}" value="{{$order->quantity}}" type="number" min="1" max="100" class="form-control text-center">
                             </td>
-                            <td data-th="Subtotal" class="text-center">{{$order->quantity*$order->book->price}}</td>
+                            <td data-th="Subtotal" class="text-center" style="font-weight: bold;">{{$order->quantity*$order->book->price}}</td>
                             <td class="actions" data-th="">
                                 {{--<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>--}}
 
@@ -70,7 +70,7 @@
                         <tr>
                             {{--<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>--}}
                             <td colspan="2" class="hidden-xs"></td>
-                            <td class="hidden-xs text-center"><strong>Total {{$data['total']}}</strong></td>
+                            <td class="hidden-xs text-center" style="font-weight: bold;"><strong>Total {{$data['total']}}</strong></td>
 
                             <form action="{{route('placeorder')}}" method="post">
                                 @csrf

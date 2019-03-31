@@ -119,7 +119,7 @@ class BorrowCnt extends Controller
     public function destroy($id)
     {
         $borrow = Borrows::find($id);
-
+        //dd($borrow);
         Borrows::where('id','=',$id)
             ->update([
                 'status' => '0'

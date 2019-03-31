@@ -7,7 +7,7 @@
     <div class="col-md-12">
         <div class="">
             <div class="" style="margin-bottom: 60px;">
-                <h5>Order Details</h5>
+                <h5>Rent Details</h5>
             </div>
         </div>
     </div><!-- end of col-md-12 -->

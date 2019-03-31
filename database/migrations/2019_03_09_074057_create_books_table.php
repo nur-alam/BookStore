@@ -17,6 +17,7 @@ class CreateBooksTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('price');
+            $table->text('desc');
             $table->integer('author_id')->unsigned();
             $table->integer('category_id')->unsigned()->comment('book_category_id');
             $table->string('image');

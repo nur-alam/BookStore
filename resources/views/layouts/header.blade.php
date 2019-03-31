@@ -3,7 +3,7 @@
         <!-- Mobile Specific Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Favicon-->
-        <link rel="shortcut icon" href="{{asset('img/icon.png')}}">
+        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}">
         <!-- Author Meta -->
         <meta name="author" content="DevTravelers">
         <!-- Meta Description -->
@@ -13,7 +13,7 @@
         <!-- meta character set -->
         <meta charset="UTF-8">
         <!-- Site Title -->
-        <title>Library</title>
+        <title>BookHub</title>
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
         <!--

@@ -11,7 +11,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="pull-left" style="margin-bottom: 30px;margin-top: 30px;">
-                            <h5>Borrow History</h5>
+                            <h5>Rent History</h5>
                         </div>
                     </div>
                 </div><!-- end of col-md-12 -->
@@ -55,7 +55,7 @@
                             @empty
                                 <tr>
                                     <td>
-                                        <h3>Borrow is empty!</h3>
+                                        <h3>Rent is empty!</h3>
                                     </td>
                                 </tr>
                             @endforelse

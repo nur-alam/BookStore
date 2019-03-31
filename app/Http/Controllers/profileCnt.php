@@ -45,6 +45,48 @@ class profileCnt extends Controller
         return view('password');
     }
 
+    public function nid()
+    {
+        return view('nidinfo');
+    }
+
+    public function nidStore(Request $request)
+    {
+
+        $allowed = config('app.allowed');
+        $maxfilesize = config('app.file_size');
+        $rules = [
+            'address' => ['required'],
+            'nid' => ['required','numeric','unique:users'],
+            'nid_image' => "required|mimes:{$allowed}|max:{$maxfilesize}"
+        ];
+
+        $this->validate($request,$rules);
+        $file = $request->file('nid_image');
+        $originalFilename = $file->getClientOriginalName();
+        $ext = explode(".", $originalFilename);
+        $destination = "img/nid_".rand()."_".$ext[0]."_".time().".".end($ext);
+        $uploaded = Storage::put($destination,file_get_contents($file));
+
+        $nid_updated = DB::table('users')
+            ->where('id',auth()->user()->id)
+            ->update([
+                'address' => $request->address,
+                'nid' => $request->nid,
+                'nid_img' => $destination
+            ]);
+
+        if($nid_updated){
+            session()->flash('info', 'NID info update now you can rent book , go ahead!!');
+            return redirect(route('home'));
+        }
+
+        return back()->withErrors([
+            'errors' => 'Something went wrong!'
+        ]);
+
+    }
+
     public function changePassword(Request $request)
     {
 
@@ -89,26 +131,12 @@ class profileCnt extends Controller
             ]);
         }
 
-        $hasUser = DB::table('users')
-            ->where('email', $request->email)
-            ->whereNotIn('id',[auth()->user()->id])
-            ->get()->first();
-
-
-        if(!empty($hasUser))
-        {
-            return back()->withErrors([
-                'errors' => 'Email already used by another one.'
-            ]);
-        }
-
         if($request->image == null){
 
             $request->image = auth()->user()->image;
 
             $rules = [
-                'name' => ['required', 'string', 'min:3'],
-                'email' => ['required','email'],
+                'name' => ['required', 'string', 'min:3']
             ];
 
             $this->validate($request,$rules);
@@ -117,7 +145,6 @@ class profileCnt extends Controller
 
             $rules = [
                 'name' => ['required', 'string', 'min:3'],
-                'email' => ['required','email'],
                 'image' => "required|mimes:{$allowed}|max:{$maxfilesize}"
             ];
 
@@ -147,7 +174,6 @@ class profileCnt extends Controller
             ->where('id',auth()->user()->id)
             ->update([
                 'name' => $request->name,
-                'email' => $request->email,
                 'image' => $request->image
             ]);
 

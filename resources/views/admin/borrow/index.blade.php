@@ -9,9 +9,9 @@
             <div class="col-md-12">
                 <div class="row">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800" style="font-weight:bold;margin-right:50px;">Borrow list</h1>
+                            <h1 class="h3 mb-0 text-gray-800" style="font-weight:bold;margin-right:50px;">Rent list</h1>
                             <a class="btn" href="{{route('borrow.history')}}" style="font-wight:bold;">
-                                Borrow Hisotry
+                                Rent Hisotry
                             </a>
                         </div>
                 </div>
@@ -51,7 +51,7 @@
                                     <a href="{{route('borrow_details',$order->id)}}" class="btn btn-info">
                                         Details
                                     </a>
-                                    <a href="{{route('borrow.destroy',$order->id)}}" class="btn btn-info">
+                                    <a href="{{route('borrow.destroyy',$order->id)}}" class="btn btn-info">
                                         <i class="fas fa-window-close"></i>
                                     </a>
                                 </td>
