@@ -1,4 +1,4 @@
->## About BookHub
+>## About BookStore
 
 >It’s an online book store where registered user can buy books or borrow books. >User
 >can add to cart, watch cart list and order books or otherwise borrow books >with cost
